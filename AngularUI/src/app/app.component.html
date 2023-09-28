@@ -1,25 +1,217 @@
-<button (click)="createHero()">Create New Hero</button>
+<mat-toolbar class="d-flex justify-content-between">
+  <div>
+    <span>Super Heroes List</span>
+  </div>
 
-<div class="container">
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Place</th>
-      <th colspan="2">Actions</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let hero of heroes">
-        <td>{{hero.name}}</td>
-        <td>{{hero.firstName}}</td>
-        <td>{{hero.lastName}}</td>
-        <td>{{hero.place}}</td>
-        <td><button (click)="updateHero(hero)">Edit</button></td>
-        <td><button (click)="deleteHero(hero)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <span class="mx-2"
+      ><button mat-raised-button color="primary">
+        <a style="text-decoration: none; color: white" href="#">Home</a>
+      </button></span
+    >
+    <span class="mx-2"
+      ><button mat-raised-button color="accent">
+        <a style="text-decoration: none; color: white" href="#">About</a>
+      </button></span
+    >
+    <span class="mx-2"
+      ><button mat-raised-button color="warn">
+        <a style="text-decoration: none; color: white" href="#">Contact</a>
+      </button></span
+    >
+  </div>
+</mat-toolbar>
+
+<!--
+<div class="margin-y-3">
+
+  <mat-sidenav-container>
+    
+    <mat-sidenav mode="side" opened="{{sidenavDisplay}}">
+      <button (click)="closeSidenav()">Close Sidenave</button>
+      <div>Side Nav</div>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+    <button (click)="openSidenav()">Show Sidenave</button>
+    <div>Main</div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
 </div>
 
-<app-edit-hero [editHero]="heroToEdit" (HeroesUpdated)="UpdatedHeroesList($event)"></app-edit-hero>
+<div class="margin-y-3">
+
+
+<mat-menu #matMainMenu="matMenu">
+  <button mat-menu-item [mat-menu-trigger-for]="frontEndMenu" >Front End</button>
+  <button mat-menu-item [mat-menu-trigger-for]="backEndMenu" >Back End</button>
+</mat-menu>
+
+<button mat-raised-button color="accent" [mat-menu-trigger-for]="matMainMenu">Menu</button>
+
+<mat-menu #frontEndMenu="matMenu">
+  <button mat-menu-item >Angular</button>
+  <button mat-menu-item >React</button>
+  <button mat-menu-item >Vue</button>
+</mat-menu>
+
+<mat-menu #backEndMenu="matMenu">
+  <button mat-menu-item >.NET</button>
+  <button mat-menu-item >NodeJS</button>
+  <button mat-menu-item >Python</button>
+</mat-menu>
+
+<mat-menu #customMenu="matMenu">
+  <ng-template matMenuContent let-name="myName" let-hobby="myHobby">
+    <button mat-menu-item>About {{name}}</button>
+    <button mat-menu-item>Hobby of {{name}} is {{hobby}}</button>
+    <button mat-menu-item>Logout {{name}}</button>
+  </ng-template>
+</mat-menu>
+
+<button mat-raised-button color="primary" [mat-menu-trigger-for]="customMenu" [matMenuTriggerData]="{myName: 'Rohit', myHobby: 'Footbal'}">Rohit</button>
+<button mat-raised-button color="accent" [mat-menu-trigger-for]="customMenu" [matMenuTriggerData]="{myName: 'Sapna', myHobby: 'Teaching'}">Sapna</button>
+</div>
+
+
+<mat-accordion>
+  <mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Angular Tutorial 
+    </mat-panel-title>
+    <mat-panel-description>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
+        voluptas maxime voluptates aut suscipit ullam optio. Odio sequi, eum
+        accusantium exercitationem, dolores nostrum natus numquam repellat in
+        quaerat est perferendis.
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div>
+    <h3>This is detail of the course we are teaching</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores aliquid
+      nesciunt, error nihil tempore eos velit libero necessitatibus sequi,
+      blanditiis obcaecati accusantium earum quas! Neque ipsa doloremque in quis
+      rem.
+    </p>
+  </div>
+  <mat-action-row>
+    <button mat-raised-button color="accent"><a href="#" style="text-decoration: none;">Enrol</a></button>
+  </mat-action-row>
+</mat-expansion-panel>
+
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Angular Tutorial 
+    </mat-panel-title>
+    <mat-panel-description>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
+        voluptas maxime voluptates aut suscipit ullam optio. Odio sequi, eum
+        accusantium exercitationem, dolores nostrum natus numquam repellat in
+        quaerat est perferendis.
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div>
+    <h3>This is detail of the course we are teaching</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores aliquid
+      nesciunt, error nihil tempore eos velit libero necessitatibus sequi,
+      blanditiis obcaecati accusantium earum quas! Neque ipsa doloremque in quis
+      rem.
+    </p>
+  </div>
+  <mat-action-row>
+    <button mat-raised-button color="accent"><a href="#" style="text-decoration: none;">Enrol</a></button>
+  </mat-action-row>
+</mat-expansion-panel>
+
+</mat-accordion>
+
+<mat-vertical-stepper linear="">
+  <mat-step label="Shoping Item Details" completed="true">
+    <h2>Item Details</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus
+      voluptas praesentium delectus, quasi aperiam sed nihil saepe vero iste
+      magni temporibus veniam repudiandae, numquam, sunt quis molestias
+      accusantium consectetur nisi.
+    </p>
+  </mat-step>
+  <mat-step label="Billing Details" completed="false" optional="true">
+    <h2>Billing Addres</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates
+      consectetur accusamus praesentium fugiat? Inventore doloremque tenetur
+      incidunt soluta sequi dolor sed, blanditiis qui nisi porro, dolorem
+      suscipit obcaecati praesentium!
+    </p>
+    <button mat-button matStepperPrevious>Previous</button>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step label="Shipping Details" completed="false">
+    <h2>Shipping Addres</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt voluptates
+      consectetur accusamus praesentium fugiat? Inventore doloremque tenetur
+      incidunt soluta sequi dolor sed, blanditiis qui nisi porro, dolorem
+      suscipit obcaecati praesentium!
+    </p>
+  </mat-step>
+</mat-vertical-stepper>
+-->
+
+<!--
+<cdk-virtual-scroll-viewport itemSize="100" class="cdkContainer">
+  <div *cdkVirtualFor="let number of numbers" class="number">
+    {{ number }}
+  </div>
+</cdk-virtual-scroll-viewport>
+
+<app-filter-table-data></app-filter-table-data>
+-->
+
+<div class="container">
+  <button mat-raised-button color="primary" (click)="createHero()">
+    Create New Hero
+  </button>
+
+  <div>
+    <table class="table table-stripped table-bordered text-center">
+      <thead>
+        <th>Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Place</th>
+        <th colspan="2">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <td>{{ hero.name }}</td>
+          <td>{{ hero.firstName }}</td>
+          <td>{{ hero.lastName }}</td>
+          <td>{{ hero.place }}</td>
+          <td>
+            <button mat-raised-button color="accent" (click)="updateHero(hero)">
+              Edit
+            </button>
+          </td>
+          <td>
+            <button mat-raised-button color="warn" (click)="deleteHero(hero)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-edit-hero
+  [editHero]="heroToEdit"
+  (HeroesUpdated)="UpdatedHeroesList($event)"
+></app-edit-hero>
+

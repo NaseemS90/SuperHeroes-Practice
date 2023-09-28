@@ -3,10 +3,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SuperHero } from 'src/app/Models/SuperHero';
 import { SuperHeroService } from 'src/app/MyServices/super-hero.service';
 
+
 @Component({
   selector: 'app-edit-hero',
   templateUrl: './edit-hero.component.html',
   styleUrls: ['./edit-hero.component.css'],
+  
 })
 export class EditHeroComponent {
 

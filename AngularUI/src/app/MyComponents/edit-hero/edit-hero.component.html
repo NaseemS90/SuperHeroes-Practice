@@ -1,26 +1,58 @@
+
+
 <div *ngIf="editHero">
-  <h3>Edit Hero: {{ editHero.name }}</h3>
+  <h3 class="mat-display-1">
+    <span *ngIf="editHero.id">Edit</span
+    ><span *ngIf="!editHero.id">Create</span> Hero: {{ editHero.name }}
+  </h3>
 
-  <div>
-    Name:
-    <input [(ngModel)]="editHero.name" placeholder="Name">
-  </div>
+  <mat-form-field class="m-2">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="editHero.name" type="text" required />
+    <mat-hint>Minimum 5 characters</mat-hint>
+  </mat-form-field>
 
-  <div>
-    First Name:
-    <input [(ngModel)]="editHero.firstName" placeholder="First Name">
-  </div>
+  <mat-form-field class="m-2">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="editHero.firstName" type="text" required />
+    <mat-hint>Minimum 5 characters</mat-hint>
+  </mat-form-field>
 
-  <div>
-    Last Name:
-    <input [(ngModel)]="editHero.lastName" placeholder="Last Name">
-  </div>
+  <mat-form-field class="m-2">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="editHero.lastName" type="text" required />
+    <mat-hint>Minimum 5 characters</mat-hint>
+  </mat-form-field>
 
+  <mat-form-field class="m-2">
+    <mat-label>Place</mat-label>
+    <input matInput [(ngModel)]="editHero.place" type="text" required />
+    <mat-hint>Minimum 5 characters</mat-hint>
+  </mat-form-field>
   <div>
-    Place:
-    <input [(ngModel)]="editHero.place" placeholder="Place">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="updateHero(editHero)"
+      *ngIf="editHero.id"
+    >
+      Save
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="deleteHero(editHero)"
+      *ngIf="editHero.id"
+    >
+      Delete
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addHero(editHero)"
+      *ngIf="!editHero.id"
+    >
+      Create
+    </button>
   </div>
-  <button (click)="updateHero(editHero)" *ngIf="editHero.id">Save</button>
-  <button (click)="deleteHero(editHero)" *ngIf="editHero.id">Delete</button>
-  <button (click)="addHero(editHero)" *ngIf="!editHero.id">Create</button>
 </div>
